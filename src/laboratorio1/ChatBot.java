@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package laboratorio1;
 
 import com.formdev.flatlaf.FlatLightLaf;
@@ -18,10 +14,6 @@ import javax.swing.UIManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- *
- * @author jlaza
- */
 public class ChatBot extends javax.swing.JFrame {
 
     String[][] matrizConv = new String[200][301]; // Matriz para almacenar conversaciones
@@ -30,6 +22,12 @@ public class ChatBot extends javax.swing.JFrame {
     int mensajeActual = 0;
     int conversacionActual = 0;
 
+    String[] preguntas = new String[100];
+    String[] respuestas = new String[100];
+    int[][] conv = new int[100][10];
+    int contp = 0;
+    int contc = 0;
+
     public ChatBot() {
         initComponents();
         inicializarListaChats();
@@ -37,12 +35,12 @@ public class ChatBot extends javax.swing.JFrame {
         // Seleccionar el primer chat por defecto
         Listachats.setSelectedIndex(0);
     }
+
     public ChatBot(String[] chat, String[][] x) {
         Listachats.setListData(chat);
         matrizConv = x;
-
     }
-    //
+
     private void inicializarListaChats() {
         DefaultListModel<String> listModel = new DefaultListModel<>();
         listModel.addElement("Chat 1");
@@ -119,125 +117,6 @@ public class ChatBot extends javax.swing.JFrame {
         return botResponse;
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        txtPregunta = new javax.swing.JTextField();
-        Enviar = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        chatArea = new javax.swing.JTextArea();
-        newchatbutton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Listachats = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Ollama");
-
-        Enviar.setText("Enviar");
-        Enviar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EnviarMouseClicked(evt);
-            }
-        });
-
-        chatArea.setColumns(20);
-        chatArea.setRows(5);
-        jScrollPane4.setViewportView(chatArea);
-
-        newchatbutton.setText("Nuevo chat");
-        newchatbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newchatbuttonActionPerformed(evt);
-            }
-        });
-
-        Listachats.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        Listachats.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListachatsMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Listachats);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Historial");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addGap(96, 96, 96)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(txtPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(Enviar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(newchatbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(119, 119, 119))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newchatbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Enviar))
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
     private void actualizarChatArea() {
         indice = Listachats.getSelectedIndex();
         if (indice != -1) {
@@ -251,90 +130,78 @@ public class ChatBot extends javax.swing.JFrame {
             }
 
             chatArea.setText(chatContent.toString());
-            
         }
     }
 
-    private void EnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnviarMouseClicked
-               if (!txtPregunta.getText().isEmpty()) {
+    private void EnviarMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        if (!txtPregunta.getText().isEmpty()) {
+            String pregunta = txtPregunta.getText();
+            mostrarEnChat("Tu", pregunta);  // Muestra la pregunta en el JTextArea
+            txtPregunta.setText("");  // Limpia el campo de texto
+
             try {
-                String pregunta = txtPregunta.getText();
-                indice = Listachats.getSelectedIndex();
-                
-                // Buscar el próximo índice disponible en la matriz
-                int nextIndex = 0;
-                while (nextIndex < 301 && matrizConv[indice][nextIndex] != null) {
-                    nextIndex += 2; // Saltar de 2 en 2 para mantener pregunta-respuesta juntos
+                String respuesta = enviarSolicitudAPI(pregunta);  // Envía la solicitud a la API
+                mostrarEnChat("Ollama", respuesta);  // Muestra la respuesta en el JTextArea
+                // Guardamos la pregunta y respuesta
+                preguntas[contp] = pregunta;
+                respuestas[contp] = respuesta;
+
+                // Agregar al historial de conversaciones
+                if (contc == 0 || contp == 0) {
+                    conv[contc][0] = contp; // Primera interacción
+                    contc++;
                 }
-                
-                if (nextIndex < 301) {
-                    // Guardar la pregunta
-                    matrizConv[indice][nextIndex] = "Tú: " + pregunta;
-                    mensajeActual++;
-                    
-                    // Obtener y guardar la respuesta
-                    String respuesta = enviarSolicitudAPI(pregunta);
-                    matrizConv[indice][nextIndex + 1] = "Ollama: " + respuesta;
-                    mensajeActual++;
-                    
-                    // Actualizar la visualización
-                    actualizarChatArea();
-                    txtPregunta.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(this, 
-                        "Se ha alcanzado el límite de mensajes para esta conversación.", 
-                        "Aviso", 
-                        JOptionPane.WARNING_MESSAGE);
-                }
-                
+                conv[contc - 1][contp] = contp; // Índice de la pregunta
+                contp++;
+
             } catch (IOException ex) {
                 Logger.getLogger(ChatBot.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, 
-                    "Error al comunicarse con el servidor: " + ex.getMessage(), 
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, 
-                "Por favor, ingrese una pregunta antes de enviar.", 
-                "Aviso", 
-                JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese una pregunta antes de enviar.", "", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_EnviarMouseClicked
+    }                                    
 
-    //Crear un nuevo chat
-    private void newchatbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newchatbuttonActionPerformed
-       if (mensajeActual > 0 && conversacionActual < 199) {
-            conversacionActual++;
-            mensajeActual = 0;
-            
-            // Actualizar el modelo de la lista
-            DefaultListModel<String> model = (DefaultListModel<String>) Listachats.getModel();
-            String NombreChat = "Chat " + (conversacionActual + 1);
-            model.addElement(NombreChat);
-            index[conversacionActual] = NombreChat;
-            
-            // Seleccionar el nuevo chat
-            Listachats.setSelectedIndex(conversacionActual);
-            
-            // Limpiar el área de chat
-            chatArea.setText("");
-            txtPregunta.setText("");
-        } else {
-            String mensaje = mensajeActual == 0 ? 
-                "No hay mensajes para guardar en el chat actual." :
-                "Se ha alcanzado el límite máximo de chats.";
-            
-            JOptionPane.showMessageDialog(this,
-                mensaje,
-                "Aviso",
-                JOptionPane.INFORMATION_MESSAGE);
+    private void mostrarEnChat(String usuario, String mensaje) {
+        chatArea.append(usuario + ": " + mensaje + "\n");
+    }
+
+    private void newchatbuttonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        chatArea.setText("");
+        txtPregunta.setText("");
+        contp = 0;
+
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (int i = 0; i < contc; i++) {
+            model.addElement("Chat " + (i + 1));
         }
-    }//GEN-LAST:event_newchatbuttonActionPerformed
+        Listachats.setModel(model);
+    }                                             
 
-    private void ListachatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListachatsMouseClicked
+    private void ListachatsMouseClicked(java.awt.event.MouseEvent evt) {                                        
         actualizarChatArea();
-    }//GEN-LAST:event_ListachatsMouseClicked
+    }                                       
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {                                         
+        String op = JOptionPane.showInputDialog("Si selecciona este boton, se borrara el chat y no se guardara en el historial. Escriba la palabra Sí en caso de realizar esta acción");
+        if (op.equalsIgnoreCase("si")) {
+            indice = Listachats.getSelectedIndex();
+            if (indice != -1) {
+                // Borrar el chat seleccionado
+                DefaultListModel<String> model = (DefaultListModel<String>) Listachats.getModel();
+                model.removeElementAt(indice);
+
+                // Limpiar la matriz de conversaciones
+                for (int i = 0; i < 301; i++) {
+                    matrizConv[indice][i] = null;
+                }
+
+                // Limpiar la vista
+                chatArea.setText("");
+                txtPregunta.setText("");
+            }
+        }
+    }                                        
 
     public static void main(String args[]) {
         try {
@@ -349,20 +216,31 @@ public class ChatBot extends javax.swing.JFrame {
                 new ChatBot().setVisible(true);
             }
         });
-
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JButton Enviar;
     private javax.swing.JList<String> Listachats;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JTextArea chatArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton newchatbutton;
     private javax.swing.JTextField txtPregunta;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 }
+Cambios principales:
+Botón de eliminar:
+
+Se implementó la funcionalidad para eliminar un chat. Cuando el usuario confirma la eliminación (escribiendo "Sí"), el chat seleccionado en la lista se borra y también se limpia su contenido en la matriz de conversaciones.
+La eliminación también afecta la vista en el chatArea, limpiando tanto el área de texto como el campo de pregunta.
+Integración del procedimiento del botón "Enviar":
+
+He fusionado el proceso de enviar una pregunta y obtener la respuesta del chatbot utilizando la API, además de guardar las preguntas y respuestas en el historial y
+
+
+
+
